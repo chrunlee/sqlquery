@@ -1,0 +1,27 @@
+{
+  "name": "sqlquery",
+  "version": "1.0.0",
+  "description": "提供nodejs 版本的mysql 链接查询，用于一些简单的条件封装。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrunlee/sqlquery.git"
+  },
+  "keywords": [
+    "sqlquery",
+    "sqlhelper",
+    "sqltool"
+  ],
+  "author": "chrunlee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrunlee/sqlquery/issues"
+  },
+  "homepage": "https://github.com/chrunlee/sqlquery#readme",
+  "dependencies": {
+    "simple-mysql-query": "^1.1.0"
+  }
+}
