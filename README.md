@@ -14,7 +14,7 @@ npm install sqlquery
 
 - 引入
 ```
-let sqlquery = require('sqlquery');
+let sqlquery = require('sqlquery-tool');
 //配置链接数据库
 sqlquery({
 	host : '127.0.0.1',
