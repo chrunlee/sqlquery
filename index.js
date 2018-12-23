@@ -158,7 +158,6 @@ let tool = {
  			 **/
 		}else if(type == 'update'){
 			sql += ` ${scheme.table} as ${tableAlias} set `;
-			console.log(valueObj);
 			for(let key in valueObj){
 				sql += ` ${key}=?,`;
 				params.push(valueObj[key]||'');
@@ -238,7 +237,6 @@ let tool = {
 		if(scheme.limit){
 			sql += ` limit ${scheme.limit.start},${scheme.limit.rows}`;
 		}
-		console.log(sql);
 		return {sql : sql,params : params};
 	}
 };
