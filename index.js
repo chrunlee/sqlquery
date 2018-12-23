@@ -5,14 +5,6 @@
 
 let query = require('simple-mysql-query');
 
-//test --> 
-query({
-	host : '127.0.0.1',
-	port : '3306',
-	user : 'root',
-	password : 'root',
-	database : 'items'
-});
 
 let tool = {
 	query : query,
@@ -250,5 +242,4 @@ let tool = {
 		return {sql : sql,params : params};
 	}
 };
-// module.exports = tool;
-tool.search('sys_user').where({id : '1'}).or({name : 'test',desc : 'abc'}).or({title : {value : '%test%',like : true}}).list();
+module.exports = tool;
