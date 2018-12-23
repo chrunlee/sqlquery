@@ -9,7 +9,7 @@ sql query sqlquerys for mysql or others?
 
 - 安装
 ```
-npm install sqlquery 
+npm install sqlquery-tool 
 ```
 
 - 引入
