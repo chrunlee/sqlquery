@@ -130,7 +130,6 @@ let tool = {
 		 * select 查询相关语句
 		 **/
 
-
 		if(type == 'select'){
 			if(scheme.join && scheme.join.length > 0){
 				//把join的table加入
@@ -176,22 +175,52 @@ let tool = {
 			 *
 			 ***/
 		}else if(type == 'insert'){
-			sql += ` into ${scheme.table} ( `;
-			//遍历data.
-			let tempStr = ` values (`;
-			for(var key in valueObj){
-				sql += `${key},`;
-				tempStr += `?,`;
-				params.push(valueObj[key]);
+			if(valueObj instanceof Array){//为数组，批量插入
+				sql += ` into ${scheme.table} ( `;
+				let tempStr = ` values `;
+				//获得固定的key顺序
+				var keyArr = [];
+				for(var key in valueObj[0]){
+					keyArr.push(key);
+					sql += ` ${key},`
+				}
+				sql = sql.substr(0,sql.length -1);
+				sql += ' ) ';
+				for(let i=0,max=valueObj.length;i<max;i++){
+					var dataObj = valueObj[i];
+					tempStr += ` ( `;
+					for(let j=0;j<keyArr.length;j++){
+						if(j == keyArr.length -1){
+							tempStr += '? ';
+						}else{
+							tempStr += '?, ';
+						}
+						params.push(dataObj[keyArr[j]] || '');
+					}
+					tempStr += ')';
+					if(i < valueObj.length -1){
+						tempStr += ',';
+					}
+				}
+				sql += tempStr;
+				return {sql : sql,params : params};
+			}else{
+				sql += ` into ${scheme.table} ( `;
+				//遍历data.,如果valueObj 为数组，那么则是批量插入
+				let tempStr = ` values (`;
+				for(var key in valueObj){
+					sql += `${key},`;
+					tempStr += `?,`;
+					params.push(valueObj[key]);
+				}
+				sql = sql.substr(0,sql.length -1);
+				tempStr = tempStr.substr(0,tempStr.length -1);
+				tempStr += ') ';
+				sql += ') '+tempStr;
+				//insert 语句nowhere
+				return {sql : sql,params : params};
 			}
-			sql = sql.substr(0,sql.length -1);
-			tempStr = tempStr.substr(0,tempStr.length -1);
-			tempStr += ') ';
-			sql += ') '+tempStr;
-			//insert 语句nowhere
-			return {sql : sql,params : params};
 		}
-
 		
 		//where 语句
 		if(scheme.where){
