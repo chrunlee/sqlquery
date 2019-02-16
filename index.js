@@ -29,6 +29,7 @@ let tool = {
 	 ***/
 	search (table){
 		// let scheme = tool.getScheme();
+		tool.scheme = {};//置空
 		let scheme = tool._getScheme();
 		scheme.table = table;
 		return tool;
