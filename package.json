@@ -1,6 +1,6 @@
 {
   "name": "sqlquery-tool",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "提供nodejs 版本的mysql 链接查询，用于一些简单的条件封装。",
   "main": "./lib/index.js",
   "scripts": {
