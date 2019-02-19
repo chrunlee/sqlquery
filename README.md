@@ -124,6 +124,14 @@ sqlquery('sys_user').insert({
 
 这四个函数都是封装的`promise`，可以直接以promise形式返回值。除了这四个函数之外，其余的都是链式调用。
 
+# 测试
+
+在测试前，请先将test/test.js 文件中的mysql数据库连接配置修改为本地。
+```
+npm install mocha assert
+npm test
+```
+
 # 说明
 目前正在实验阶段，随时会修改。
 
