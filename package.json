@@ -1,6 +1,6 @@
 {
   "name": "sqlquery-tool",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "提供nodejs 版本的mysql 链接查询，用于一些简单的条件封装。",
   "main": "./lib/index.js",
   "scripts": {
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/chrunlee/sqlquery#readme",
   "dependencies": {
-    "simple-mysql-query": "^1.1.4"
+    "async": "^3.1.0",
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "assert": "^1.5.0"
